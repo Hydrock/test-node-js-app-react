@@ -13,8 +13,14 @@ app.get('/', function(request, response) {
   response.sendFile('index.html', { root: path.join(__dirname, '../client') });
 });
 
-app.get('/main.bundle.js', function(request, response) {
-  response.sendFile('main.bundle.js', { root: path.join(__dirname, '../client') });
+// app.get('/main.bundle.js', function(request, response) {
+//   console.log(request)
+//   response.sendFile('main.bundle.js', { root: path.join(__dirname, '../client') });
+// });
+
+app.get('/*', function(request, response) {
+  console.log(path.join(__dirname, '..', request.url));
+  response.sendFile(request.url, { root: path.join(__dirname, '../client') });
 });
 
 var port = process.env.PORT || 5000;
