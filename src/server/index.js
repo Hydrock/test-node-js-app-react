@@ -23,6 +23,12 @@ app.get('/*', function(request, response) {
   response.sendFile(request.url, { root: path.join(__dirname, '../client') });
 });
 
+app.use(function(err, req, response, next) {
+  if (err) {
+    response.sendFile('404.html', { root: path.join(__dirname, '../client') });
+  }
+});
+
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
   console.log("Listening on " + port);

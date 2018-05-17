@@ -25,6 +25,11 @@ module.exports = {
       inject: true,
       template: './src/template/index.html',
     }),
+    new HtmlWebpackPlugin({
+        filename: '404.html',
+        inject: true,
+        template: './src/template/404.html',
+    }),
     new CopyWebpackPlugin([ { from: path.resolve(__dirname, '../src/server/index.js'), to: path.resolve(__dirname, '../dist/server') } ])
   ]
 };
